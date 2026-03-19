@@ -79,6 +79,24 @@ export default function Home() {
 
           <DownloadForm onFetch={handleFetch} loading={loading} onReset={handleReset} hasResult={!!mediaData} />
 
+          {!mediaData && !loading && (
+            <div className="mt-4 text-center">
+              <button
+                onClick={async () => {
+                  setLoading(true);
+                  setError(null);
+                  const res = await fetch("/api/test");
+                  const data = await res.json();
+                  setMediaData(data);
+                  setLoading(false);
+                }}
+                className="text-sm text-gray-500 hover:text-gray-300 transition-colors underline underline-offset-2"
+              >
+                Try a demo (no real link needed)
+              </button>
+            </div>
+          )}
+
           {error && (
             <div className="mt-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 fade-in">
               <p className="flex items-center gap-2">
