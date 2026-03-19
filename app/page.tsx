@@ -124,7 +124,7 @@ export default function Home() {
 
         {/* Tipos suportados */}
         <div className="relative z-10 mt-16 flex flex-wrap justify-center gap-3 px-4">
-          {["Vídeos", "Reels", "Stories", "Fotos", "Carrosséis", "IGTV"].map((type) => (
+          {["Vídeos", "Reels", "Stories", "Fotos", "Carrosséis"].map((type) => (
             <span
               key={type}
               className="px-4 py-2 rounded-full glass-card text-sm text-gray-300 flex items-center gap-2"
