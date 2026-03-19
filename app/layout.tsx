@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "InstaDownloader - Download Instagram Videos, Reels, Stories & Photos",
+  title: "InstaDownloader - Baixar Vídeos, Reels, Stories e Fotos do Instagram",
   description:
-    "Download Instagram videos, reels, stories, photos and carousel posts for free. No login required. Fast and easy Instagram downloader.",
-  keywords: "instagram downloader, download instagram video, instagram reels downloader, instagram stories downloader, instagram photo downloader",
+    "Baixe vídeos, reels, stories, fotos e carrosséis do Instagram de graça. Sem precisar de login. Downloader de Instagram rápido e fácil.",
+  keywords: "baixar video instagram, downloader instagram, baixar reels instagram, baixar stories instagram, baixar fotos instagram, salvar video instagram",
   openGraph: {
-    title: "InstaDownloader - Download Instagram Videos, Reels, Stories & Photos",
-    description: "Download Instagram videos, reels, stories, photos and carousel posts for free.",
+    title: "InstaDownloader - Baixar Vídeos, Reels, Stories e Fotos do Instagram",
+    description: "Baixe vídeos, reels, stories, fotos e carrosséis do Instagram de graça. Sem login necessário.",
     type: "website",
   },
 };

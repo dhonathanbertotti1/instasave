@@ -4,32 +4,32 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "Is InstaDownloader free to use?",
-    answer: "Yes, InstaDownloader is completely free to use. There are no hidden fees, no subscriptions, and no sign-up required.",
+    question: "O InstaDownloader é gratuito?",
+    answer: "Sim, o InstaDownloader é completamente gratuito. Sem taxas ocultas, sem assinatura e sem necessidade de cadastro.",
   },
   {
-    question: "Do I need to log in to Instagram to download content?",
-    answer: "No, you don't need to log in to Instagram or create any account. Simply paste the link of a public Instagram post and download it instantly.",
+    question: "Preciso fazer login no Instagram para baixar conteúdo?",
+    answer: "Não. Você não precisa fazer login no Instagram nem criar nenhuma conta. Basta colar o link de um post público e baixar na hora.",
   },
   {
-    question: "What types of Instagram content can I download?",
-    answer: "You can download Instagram videos, reels, stories, photos, carousel posts (multiple images/videos), and IGTV videos — as long as they are from public accounts.",
+    question: "Quais tipos de conteúdo do Instagram posso baixar?",
+    answer: "Você pode baixar vídeos, reels, stories, fotos, carrosséis (várias imagens/vídeos) e vídeos do IGTV — desde que sejam de perfis públicos.",
   },
   {
-    question: "Can I download private Instagram videos?",
-    answer: "No. InstaDownloader only works with public Instagram content. Private accounts and posts require the account holder's permission to view.",
+    question: "Posso baixar vídeos de contas privadas?",
+    answer: "Não. O InstaDownloader funciona apenas com conteúdo público. Contas e posts privados exigem a permissão do dono da conta para serem visualizados.",
   },
   {
-    question: "In what quality are the videos downloaded?",
-    answer: "Videos are downloaded in the highest quality available from Instagram, usually up to 1080p. The quality depends on what was originally uploaded.",
+    question: "Em qual qualidade os vídeos são baixados?",
+    answer: "Os vídeos são baixados na maior qualidade disponível no Instagram, geralmente até 1080p. A qualidade depende do que foi enviado originalmente.",
   },
   {
-    question: "Is it legal to download Instagram videos?",
-    answer: "Downloading Instagram content for personal, offline viewing is generally accepted. However, you should not redistribute or use downloaded content commercially without the creator's permission. Always respect copyright and content creators.",
+    question: "É legal baixar vídeos do Instagram?",
+    answer: "Baixar conteúdo do Instagram para uso pessoal e offline é geralmente aceito. No entanto, você não deve redistribuir ou usar o conteúdo baixado comercialmente sem a permissão do criador. Sempre respeite os direitos autorais e os criadores de conteúdo.",
   },
   {
-    question: "Why can't I download a specific post?",
-    answer: "Some posts may fail to download due to Instagram's restrictions, private account settings, or temporary rate limiting. Make sure the account is public and try again in a few minutes.",
+    question: "Por que não consigo baixar um post específico?",
+    answer: "Alguns posts podem falhar por restrições do Instagram, configurações de conta privada ou limitação temporária de requisições. Certifique-se de que a conta é pública e tente novamente em alguns minutos.",
   },
 ];
 
@@ -41,10 +41,10 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Frequently Asked Questions
+            Perguntas Frequentes
           </h2>
           <p className="text-gray-400">
-            Everything you need to know about InstaDownloader.
+            Tudo o que você precisa saber sobre o InstaDownloader.
           </p>
         </div>
 

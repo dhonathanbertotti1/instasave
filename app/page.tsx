@@ -31,12 +31,12 @@ export default function Home() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to fetch media");
+        throw new Error(data.error || "Falha ao buscar a mídia");
       }
 
       setMediaData(data);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setError(err instanceof Error ? err.message : "Algo deu errado. Por favor, tente novamente.");
     } finally {
       setLoading(false);
     }
@@ -51,9 +51,9 @@ export default function Home() {
     <main className="flex flex-col min-h-screen">
       <Header />
 
-      {/* Hero Section */}
+      {/* Seção Hero */}
       <section className="relative flex-1 flex flex-col items-center justify-start pt-16 pb-20 px-4">
-        {/* Background glow */}
+        {/* Brilho de fundo */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-[#f09433]/10 via-[#dc2743]/10 to-[#bc1888]/10 blur-3xl" />
         </div>
@@ -62,20 +62,20 @@ export default function Home() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-sm text-gray-400 mb-6">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            Free · No Login · No Watermark
+            Grátis · Sem Login · Sem Marca d&apos;água
           </div>
 
-          {/* Title */}
+          {/* Título */}
           <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
-            Download Instagram{" "}
-            <span className="gradient-text">Videos, Reels,</span>
+            Baixe Vídeos, Reels,{" "}
+            <span className="gradient-text">Stories e Fotos</span>
             <br />
-            <span className="gradient-text">Stories & Photos</span>
+            <span className="gradient-text">do Instagram</span>
           </h1>
 
           <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-            Paste any Instagram link below to download videos, reels, stories, photos
-            and carousel posts instantly. No account needed.
+            Cole qualquer link do Instagram abaixo para baixar vídeos, reels, stories, fotos
+            e carrosséis na hora. Sem precisar de conta.
           </p>
 
           <DownloadForm onFetch={handleFetch} loading={loading} onReset={handleReset} hasResult={!!mediaData} />
@@ -93,7 +93,7 @@ export default function Home() {
                 }}
                 className="text-sm text-gray-500 hover:text-gray-300 transition-colors underline underline-offset-2"
               >
-                Try a demo (no real link needed)
+                Testar com um exemplo (sem link real)
               </button>
             </div>
           )}
@@ -112,7 +112,7 @@ export default function Home() {
           {loading && (
             <div className="mt-10 flex flex-col items-center gap-4 fade-in">
               <div className="spinner" />
-              <p className="text-gray-400">Fetching media...</p>
+              <p className="text-gray-400">Buscando mídia...</p>
             </div>
           )}
 
@@ -123,9 +123,9 @@ export default function Home() {
           )}
         </div>
 
-        {/* Supported types */}
+        {/* Tipos suportados */}
         <div className="relative z-10 mt-16 flex flex-wrap justify-center gap-3 px-4">
-          {["Videos", "Reels", "Stories", "Photos", "Carousels", "IGTV"].map((type) => (
+          {["Vídeos", "Reels", "Stories", "Fotos", "Carrosséis", "IGTV"].map((type) => (
             <span
               key={type}
               className="px-4 py-2 rounded-full glass-card text-sm text-gray-300 flex items-center gap-2"

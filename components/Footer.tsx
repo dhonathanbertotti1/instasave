@@ -13,18 +13,18 @@ export default function Footer() {
           </div>
 
           <p className="text-xs text-gray-600 text-center">
-            InstaDownloader is not affiliated with Instagram or Meta. Use responsibly and respect copyright.
+            O InstaDownloader não tem nenhuma afiliação com o Instagram ou a Meta. Use com responsabilidade e respeite os direitos autorais.
           </p>
 
           <div className="flex items-center gap-5 text-xs text-gray-500">
-            <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Terms of Use</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Contact</a>
+            <a href="#" className="hover:text-gray-300 transition-colors">Política de Privacidade</a>
+            <a href="#" className="hover:text-gray-300 transition-colors">Termos de Uso</a>
+            <a href="#" className="hover:text-gray-300 transition-colors">Contato</a>
           </div>
         </div>
 
         <div className="mt-6 text-center text-xs text-gray-700">
-          © {new Date().getFullYear()} InstaDownloader. All rights reserved.
+          © {new Date().getFullYear()} InstaDownloader. Todos os direitos reservados.
         </div>
       </div>
     </footer>

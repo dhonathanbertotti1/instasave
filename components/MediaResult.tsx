@@ -9,9 +9,9 @@ interface Props {
 }
 
 const typeLabels: Record<string, string> = {
-  video: "Video",
-  image: "Photo",
-  carousel: "Carousel",
+  video: "Vídeo",
+  image: "Foto",
+  carousel: "Carrossel",
   story: "Story",
   reel: "Reel",
   igtv: "IGTV",
@@ -49,13 +49,9 @@ export default function MediaResult({ data }: Props) {
     }
   };
 
-  const handleOpenOriginal = (url: string) => {
-    window.open(data.postUrl, "_blank", "noopener,noreferrer");
-  };
-
   return (
     <div className="w-full text-left">
-      {/* Post info header */}
+      {/* Cabeçalho do post */}
       <div className="glass-card rounded-2xl p-5 mb-4">
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 rounded-full instagram-gradient flex items-center justify-center flex-shrink-0">
@@ -67,29 +63,31 @@ export default function MediaResult({ data }: Props) {
             <div className="flex items-center gap-2 flex-wrap">
               <span className="font-semibold text-white">@{data.username}</span>
               <span className={`text-xs px-2 py-0.5 rounded-full border ${typeColors[data.type] || typeColors.video}`}>
-                {typeLabels[data.type] || "Media"}
+                {typeLabels[data.type] || "Mídia"}
               </span>
               <span className="text-xs text-gray-500">
-                {data.items.length} {data.items.length === 1 ? "file" : "files"} found
+                {data.items.length} {data.items.length === 1 ? "arquivo encontrado" : "arquivos encontrados"}
               </span>
             </div>
             {data.caption && (
               <p className="text-sm text-gray-400 mt-1 line-clamp-2">{data.caption}</p>
             )}
           </div>
-          <button
-            onClick={() => handleOpenOriginal(data.postUrl)}
+          <a
+            href={data.postUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-xs text-gray-500 hover:text-gray-300 transition-colors flex items-center gap-1 flex-shrink-0"
           >
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
             Original
-          </button>
+          </a>
         </div>
       </div>
 
-      {/* Media items */}
+      {/* Itens de mídia */}
       <div className={`grid gap-4 ${data.items.length > 1 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"}`}>
         {data.items.map((item, index) => (
           <div key={index} className="media-card rounded-2xl overflow-hidden">
@@ -103,12 +101,12 @@ export default function MediaResult({ data }: Props) {
                         <path d="M8 5v14l11-7z" />
                       </svg>
                     </div>
-                    <p className="text-xs text-gray-400">Video {data.items.length > 1 ? `#${index + 1}` : ""}</p>
+                    <p className="text-xs text-gray-400">Vídeo {data.items.length > 1 ? `#${index + 1}` : ""}</p>
                   </div>
                   {item.thumbnail && (
                     <Image
                       src={`/api/proxy?url=${encodeURIComponent(item.thumbnail)}`}
-                      alt="Video thumbnail"
+                      alt="Miniatura do vídeo"
                       fill
                       className="object-cover opacity-50"
                       unoptimized
@@ -119,7 +117,7 @@ export default function MediaResult({ data }: Props) {
                 <div className="w-full h-full relative">
                   <Image
                     src={`/api/proxy?url=${encodeURIComponent(item.url)}`}
-                    alt={`Media ${index + 1}`}
+                    alt={`Mídia ${index + 1}`}
                     fill
                     className="object-contain"
                     unoptimized
@@ -128,7 +126,6 @@ export default function MediaResult({ data }: Props) {
                       target.style.display = "none";
                     }}
                   />
-                  {/* Fallback when image fails */}
                   <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-sm bg-gray-900">
                     <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -137,7 +134,7 @@ export default function MediaResult({ data }: Props) {
                 </div>
               )}
 
-              {/* Type badge */}
+              {/* Badge de tipo */}
               <div className="absolute top-2 left-2">
                 <span className="text-xs px-2 py-1 rounded-full bg-black/60 text-white backdrop-blur-sm flex items-center gap-1">
                   {item.type === "video" ? (
@@ -149,13 +146,13 @@ export default function MediaResult({ data }: Props) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   )}
-                  {item.type === "video" ? "Video" : "Photo"}
+                  {item.type === "video" ? "Vídeo" : "Foto"}
                   {data.items.length > 1 && ` ${index + 1}/${data.items.length}`}
                 </span>
               </div>
             </div>
 
-            {/* Download button */}
+            {/* Botão de download */}
             <div className="p-4">
               <button
                 onClick={() => handleDownload(item, index)}
@@ -168,20 +165,19 @@ export default function MediaResult({ data }: Props) {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                     </svg>
-                    Downloading...
+                    Baixando...
                   </>
                 ) : (
                   <>
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
-                    Download {item.type === "video" ? "Video" : "Photo"}{" "}
-                    {data.items.length > 1 ? `#${index + 1}` : ""}
+                    Baixar {item.type === "video" ? "Vídeo" : "Foto"}
+                    {data.items.length > 1 ? ` #${index + 1}` : ""}
                   </>
                 )}
               </button>
 
-              {/* Direct link fallback */}
               <a
                 href={item.url}
                 target="_blank"
@@ -191,7 +187,7 @@ export default function MediaResult({ data }: Props) {
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
-                Open in new tab
+                Abrir em nova aba
               </a>
             </div>
           </div>
@@ -201,7 +197,7 @@ export default function MediaResult({ data }: Props) {
       {data.items.length > 1 && (
         <div className="mt-4 p-4 glass-card rounded-xl text-center">
           <p className="text-sm text-gray-400 mb-3">
-            Download all {data.items.length} files at once
+            Baixar todos os {data.items.length} arquivos de uma vez
           </p>
           <button
             onClick={() => data.items.forEach((item, i) => setTimeout(() => handleDownload(item, i), i * 500))}
@@ -210,7 +206,7 @@ export default function MediaResult({ data }: Props) {
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            Download All ({data.items.length})
+            Baixar Todos ({data.items.length})
           </button>
         </div>
       )}
