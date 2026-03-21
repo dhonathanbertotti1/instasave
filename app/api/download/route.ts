@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { stripMp4Metadata } from "@/lib/stripMp4Metadata";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -32,6 +33,12 @@ export async function GET(req: NextRequest) {
       "Content-Disposition": `attachment; filename="${safeFilename}"`,
       "Cache-Control": "no-store",
     });
+
+    if (isVideo) {
+      const rawBuffer = Buffer.from(await response.arrayBuffer());
+      const cleanBuffer = stripMp4Metadata(rawBuffer);
+      return new NextResponse(cleanBuffer, { headers });
+    }
 
     return new NextResponse(response.body, { headers });
   } catch (error: unknown) {
